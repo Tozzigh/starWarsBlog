@@ -1,16 +1,16 @@
 import React from "react";
 import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.scss";
-
+import Cards from "../../js/component/cards.js";
 const Home = () => (
 	<>
 		<div className="row">
 			<div>
 				<h1>Favorites</h1>
-				{}
+				<hr />
+				{Cards()}
 			</div>
 		</div>
-		<hr />
 		<div clqassName="row">
 			<div>
 				<h1>Peoples</h1>
