@@ -3,12 +3,33 @@ import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.scss";
 
 const Home = () => (
-	<div className="text-center mt-5">
-		<h1>Hello Rigo!</h1>
-		<p>
-			<img src={rigoImage} />
-		</p>
-	</div>
+	<>
+		<div className="row">
+			<div>
+				<h1>Favorites</h1>
+				{}
+			</div>
+		</div>
+		<hr />
+		<div className="row">
+			<div>
+				<h1>Peoples</h1>
+				{}
+			</div>
+		</div>
+		<div className="row">
+			<div>
+				<h1>Planets</h1>
+				{}
+			</div>
+		</div>
+		<div className="row">
+			<div>
+				<h1>Vehicles</h1>
+				{}
+			</div>
+		</div>
+	</>
 );
 
 export default Home;
