@@ -11,7 +11,7 @@ const Home = () => (
 			</div>
 		</div>
 		<hr />
-		<div className="row">
+		<div clqassName="row">
 			<div>
 				<h1>Peoples</h1>
 				{}
