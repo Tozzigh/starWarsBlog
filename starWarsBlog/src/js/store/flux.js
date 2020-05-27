@@ -3,7 +3,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			people: [],
 			planets: [],
-			vehicles: []
+			vehicles: [],
+			favorites: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -16,6 +17,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			loadSomeVehicles: data => {
 				setStore({ vehicles: data });
+			},
+			loadSomeFavorites: (uno, dos, tres) => {
+				setStore({ favorites: [{ uno, dos, tres }] });
 			}
 		}
 	};

@@ -1,15 +1,17 @@
 body{
     overflow-x: hidden;
 }
-.fa-heart{
+.fa{
     color: green;
     font-size: 2rem;
+    background-color: transparent !important;
 }
-.detailsLike{
+.card-footer{
     display: flex;
+    background-color: transparent !important;
     justify-content: space-between;
 }
-.cards{
+.card{
     border-radius: 30px;
 }
 .card-img-top{
