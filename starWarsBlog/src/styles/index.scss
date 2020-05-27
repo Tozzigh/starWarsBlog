@@ -1,3 +1,18 @@
 body{
-    overflow: hidden;
+    overflow-x: hidden;
+}
+.fa-heart{
+    color: green;
+    font-size: 2rem;
+}
+.detailsLike{
+    display: flex;
+    justify-content: space-between;
+}
+.cards{
+    border-radius: 30px;
+}
+.card-img-top{
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
 }

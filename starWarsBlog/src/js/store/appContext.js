@@ -31,14 +31,27 @@ const injectContext = PassedComponent => {
 			 * state.actions.loadSomeData(); <---- calling this function from the flux.js actions
 			 *
 			 **/
-			fetch("https://swapi.dev/api/people/1/", {
+			fetch("https://swapi.dev/api/people/", {
 				method: "GET",
 				headers: {}
 			})
 				.then(response => {
 					return response.json();
 				})
-				.then(data => console.log(data))
+				.then(data => state.actions.loadSomePeople(data))
+				.catch(err => {
+					console.log(err);
+				});
+		}, []);
+		useEffect(() => {
+			fetch("https://swapi.dev/api/planets/", {
+				method: "GET",
+				headers: {}
+			})
+				.then(response => {
+					return response.json();
+				})
+				.then(data => state.actions.loadSomePlanets(data))
 				.catch(err => {
 					console.log(err);
 				});
