@@ -16,3 +16,13 @@ body{
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
 }
+.views{
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: center;
+}
+
+hr{
+    background-color: red;
+    width: 100vw;
+}

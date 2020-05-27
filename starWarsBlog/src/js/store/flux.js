@@ -2,7 +2,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			people: [],
-			planets: []
+			planets: [],
+			vehicles: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -13,9 +14,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ planets: data });
 			},
 
-			mappa: () => {
-				const store = getStore();
-				return store.people;
+			loadSomeVehicles: data => {
+				setStore({ vehicles: data });
 			}
 		}
 	};

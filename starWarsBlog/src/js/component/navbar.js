@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import rigoImage from "../../img/rigo-baby.jpg";
-import "../../styles/home.scss";
+import "../../styles/index.scss";
 export const Navbar = () => {
 	return (
 		<nav className="navbar navbar-dark bg-dark mb-3 flex-column">

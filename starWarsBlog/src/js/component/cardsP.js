@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/index.scss";
-const Cards = (name, gender, birth, height) => {
+const CardsP = (name, population, terrain, gravity) => {
 	//const { store, actions } = useContext(Context);
 
 	return (
@@ -9,9 +9,9 @@ const Cards = (name, gender, birth, height) => {
 			<img className="card-img-top" src="http://placehold.it/500x325" />
 			<div className="card-body">
 				<h4 className="card-title">{name}</h4>
-				<p className="card-text">{"Gender: " + gender}</p>
-				<p className="card-text">{"Birth_year: " + birth}</p>
-				<p className="card-text">{"Height: " + height}</p>
+				<p className="card-text">{"Population: " + population}</p>
+				<p className="card-text">{"Terrain: " + terrain}</p>
+				<p className="card-text">{"Gravity: " + gravity}</p>
 				<div className="detailsLike">
 					<button className="btn btn-primary">Learn more!</button>
 					<button className="fa fa-heart border-0 bg-white" />
@@ -20,4 +20,4 @@ const Cards = (name, gender, birth, height) => {
 		</>
 	);
 };
-export default Cards;
+export default CardsP;
