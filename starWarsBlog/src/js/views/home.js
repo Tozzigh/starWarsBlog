@@ -10,13 +10,15 @@ import { Link } from "react-router-dom";
 const Home = () => {
 	const { store, actions } = useContext(Context);
 	return (
-		<div className="container-fluid m-0 h-100">
+		<div className="container-fluid home m-0 h-100">
 			<div className="row ml-1">
 				<h1>Favorites</h1>
 				<hr />
 				{store.favorites.map((item, index) => {
 					return (
-						<div className="card col-lg-2 col-md-6 mb-4 border border-secondary p-0 m-3" key={index}>
+						<div
+							className="card bg-dark col-lg-2 col-md-6 mb-4 border border-secondary p-0 m-3"
+							key={index}>
 							<img className="card-img-top" src="http://placehold.it/500x325" />
 							<div className="card-body">
 								<h4 className="card-title">{Object.values(item)[0]}</h4>
@@ -44,7 +46,9 @@ const Home = () => {
 				<hr />
 				{store.people.map((item, index) => {
 					return (
-						<div className="card col-lg-2 col-md-6 mb-4 border border-secondary p-0 m-3" key={index}>
+						<div
+							className="card bg-dark col-lg-2 col-md-6 mb-4 border border-secondary p-0 m-3"
+							key={index}>
 							{Cards(item.name, item.gender, item.birth_year, item.height, index)}
 						</div>
 					);
@@ -55,7 +59,9 @@ const Home = () => {
 				<hr />
 				{store.planets.map((item, index) => {
 					return (
-						<div className="card col-lg-2 col-md-6 mb-4 border border-secondary p-0 m-3" key={index}>
+						<div
+							className="card bg-dark col-lg-2 col-md-6 mb-4 border border-secondary p-0 m-3"
+							key={index}>
 							{CardsP(item.name, item.population, item.terrain, item.gravity, index)}
 						</div>
 					);
@@ -66,7 +72,9 @@ const Home = () => {
 				<hr />
 				{store.vehicles.map((item, index) => {
 					return (
-						<div className="card col-lg-2 col-md-6 mb-4 border border-secondary p-0 m-3" key={index}>
+						<div
+							className="card bg-dark col-lg-2 col-md-6 mb-4 border border-secondary p-0 m-3"
+							key={index}>
 							{CardsV(item.name, item.model, item.vehicle_class, item.passengers, index)}
 						</div>
 					);

@@ -4,7 +4,7 @@ import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/index.scss";
 export const Navbar = () => {
 	return (
-		<nav className="navbar navbar-dark bg-dark mb-3 flex-column">
+		<nav className="navbar border border-white navbar-dark bg-dark mb-3 flex-column">
 			<Link to="/">
 				<img src="https://static-mh.content.disney.io/starwars/assets/navigation/sw_logo_stacked-336c62367939.png" />
 			</Link>
