@@ -9,7 +9,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			pullPeople: () => {
-				fetch("https://swapi.dev/api/planets/")
+				fetch("https://swapi.dev/api/people/")
 					.then(response => response.json())
 					.then(data => getActions().loadSomePeople(data.results));
 			},
@@ -25,7 +25,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ planets: data });
 			},
 			pullVehicles: () => {
-				fetch("https://swapi.dev/api/planets/")
+				fetch("https://swapi.dev/api/vehicles/")
 					.then(response => response.json())
 					.then(data => getActions().loadSomeVehicles(data.results));
 			},

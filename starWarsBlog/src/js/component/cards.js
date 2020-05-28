@@ -14,7 +14,7 @@ const Cards = (name, gender, birth, height) => {
 				<p className="card-text">{"Height: " + height}</p>
 			</div>
 			<div className="card-footer">
-				<Link to={{ pathname: "/single/" + name.replace(" ", "").toLowerCase(), state: { name: { name } } }}>
+				<Link to={{ pathname: "/single/" + name.replace(" ", "").toLowerCase(), state: { name: name } }}>
 					<button className="btn btn-primary" onClick={() => actions.loadSingle({ name })}>
 						Learn more!
 					</button>

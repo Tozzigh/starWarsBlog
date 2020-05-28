@@ -14,8 +14,10 @@ const CardsP = (name, population, terrain, gravity) => {
 				<p className="card-text">{"Gravity: " + gravity}</p>
 			</div>
 			<div className="card-footer">
-				<Link to={{ pathname: "/single/" + name.replace(" ", "").toLowerCase(), state: { name: { name } } }}>
-					<button className="btn btn-primary">Learn more!</button>
+				<Link to={{ pathname: "/single/" + name.replace(" ", "").toLowerCase(), state: { name: name } }}>
+					<button className="btn btn-primary" onClick={() => actions.loadSingle({ name })}>
+						Learn more!
+					</button>
 				</Link>
 				<button
 					className="fa fa-heart border-0"

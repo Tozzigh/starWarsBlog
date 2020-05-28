@@ -14,7 +14,7 @@ const CardsV = (name, model, vehicle_class, passenger) => {
 				<p className="card-text">{"Passenger: " + passenger}</p>
 			</div>
 			<div className="card-footer">
-				<Link to={{ pathname: "/single/" + name.replace(" ", "").toLowerCase(), state: { name: { name } } }}>
+				<Link to={{ pathname: "/single/" + name.replace(" ", "").toLowerCase(), state: { name: name } }}>
 					<button className="btn btn-primary" onClick={() => actions.loadSingle({ name })}>
 						Learn more!
 					</button>

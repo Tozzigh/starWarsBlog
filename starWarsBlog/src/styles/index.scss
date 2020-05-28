@@ -2,7 +2,7 @@ body{
     overflow-x: hidden;
 }
 .fa{
-    color: green;
+    color: rgb(241, 241, 65);
     font-size: 2rem;
     background-color: transparent !important;
 }
@@ -38,4 +38,5 @@ hr{
     background-image: url("https://static-mh.content.disney.io/starwars/assets/navigation/navigation_stars-c6452e016c73.jpg");
     background-repeat: none;
     background-size: cover;
+    padding-top: 30px;
 }
