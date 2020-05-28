@@ -1,11 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/index.scss";
-const Cards = (name, gender, birth, height, index) => {
+const Cards = (name, gender, birth, height) => {
 	const { store, actions } = useContext(Context);
-	const uno = name;
-	const dos = gender;
-	const tres = birth;
 	return (
 		<>
 			<img className="card-img-top" src="http://placehold.it/500x325" />
@@ -19,7 +16,17 @@ const Cards = (name, gender, birth, height, index) => {
 				<button className="btn btn-primary" onClick={() => console.log(store)}>
 					Learn more!
 				</button>
-				<button className="fa fa-heart border-0" onClick={() => actions.loadSomeFavorites(uno, dos, tres)} />
+				<button
+					className="fa fa-heart border-0"
+					onClick={() =>
+						actions.loadSomeFavorites({
+							Name: name,
+							Gender: gender,
+							Birth_yeat: birth,
+							Height: height
+						})
+					}
+				/>
 			</div>
 		</>
 	);

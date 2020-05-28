@@ -13,8 +13,20 @@ const CardsP = (name, population, terrain, gravity) => {
 				<p className="card-text">{"Gravity: " + gravity}</p>
 			</div>
 			<div className="card-footer">
-				<button className="btn btn-primary">Learn more!</button>
-				<button className="fa fa-heart border-0" />
+				<button className="btn btn-primary" onClick={() => console.log(store)}>
+					Learn more!
+				</button>
+				<button
+					className="fa fa-heart border-0"
+					onClick={() =>
+						actions.loadSomeFavorites({
+							Name: name,
+							Population: population,
+							Terrain: terrain,
+							Gravity: gravity
+						})
+					}
+				/>
 			</div>
 		</>
 	);

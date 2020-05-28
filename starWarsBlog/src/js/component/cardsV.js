@@ -13,8 +13,20 @@ const CardsV = (name, model, vehicle_class, passenger) => {
 				<p className="card-text">{"Passenger: " + passenger}</p>
 			</div>
 			<div className="card-footer">
-				<button className="btn btn-primary">Learn more!</button>
-				<button className="fa fa-heart border-0" />
+				<button className="btn btn-primary" onClick={() => console.log(store)}>
+					Learn more!
+				</button>
+				<button
+					className="fa fa-heart border-0"
+					onClick={() =>
+						actions.loadSomeFavorites({
+							Name: name,
+							Model: model,
+							Vehicle_class: vehicle_class,
+							Passenger: passenger
+						})
+					}
+				/>
 			</div>
 		</>
 	);

@@ -14,7 +14,24 @@ const Home = () => {
 			<div className="row ml-1">
 				<h1>Favorites</h1>
 				<hr />
-				{}
+				{store.favorites.map((item, index) => {
+					return (
+						<div className="card col-lg-2 col-md-6 mb-4 border border-secondary p-0 m-3" key={index}>
+							<img className="card-img-top" src="http://placehold.it/500x325" />
+							<div className="card-body">
+								<h4 className="card-title">{Object.values(item)[0]}</h4>
+								<p className="card-text">{Object.keys(item)[1] + ": " + Object.values(item)[1]}</p>
+								<p className="card-text">{Object.keys(item)[2] + ": " + Object.values(item)[2]}</p>
+								<p className="card-text">{Object.keys(item)[3] + ": " + Object.values(item)[3]}</p>
+							</div>
+							<div className="card-footer">
+								<button className="btn btn-primary" onClick={() => console.log(store)}>
+									Learn more!
+								</button>
+							</div>
+						</div>
+					);
+				})}
 			</div>
 			<div className="row ml-1">
 				<h1>Peoples</h1>

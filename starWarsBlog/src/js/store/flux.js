@@ -18,8 +18,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 			loadSomeVehicles: data => {
 				setStore({ vehicles: data });
 			},
-			loadSomeFavorites: (uno, dos, tres) => {
-				setStore({ favorites: [{ uno, dos, tres }] });
+			loadSomeFavorites: card => {
+				const store = getStore();
+				if (store.favorites.length < 1) {
+					setStore({ favorites: [...store.favorites, card] });
+				} else {
+					for (let obj in store.favorites) {
+						if (Object.values(card)[0] !== Object.values(store.favorites[obj][0])) {
+							setStore({ favorites: [...store.favorites, card] });
+							console.log(card, store.favorites, Object.values(store.favorites[obj])[0]);
+						}
+					}
+				}
 			}
 		}
 	};
