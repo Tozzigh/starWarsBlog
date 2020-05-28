@@ -8,19 +8,35 @@ const getState = ({ getStore, getActions, setStore }) => {
 			single: ""
 		},
 		actions: {
-			loadSingle: data => {
-				setStore({ single: data });
+			pullPeople: () => {
+				fetch("https://swapi.dev/api/planets/")
+					.then(response => response.json())
+					.then(data => getActions().loadSomePeople(data.results));
 			},
 			loadSomePeople: data => {
 				setStore({ people: data });
 			},
+			pullPlanets: () => {
+				fetch("https://swapi.dev/api/planets/")
+					.then(response => response.json())
+					.then(data => getActions().loadSomePlanets(data.results));
+			},
 			loadSomePlanets: data => {
 				setStore({ planets: data });
 			},
-
+			pullVehicles: () => {
+				fetch("https://swapi.dev/api/planets/")
+					.then(response => response.json())
+					.then(data => getActions().loadSomeVehicles(data.results));
+			},
 			loadSomeVehicles: data => {
 				setStore({ vehicles: data });
 			},
+
+			loadSingle: data => {
+				setStore({ single: data });
+			},
+
 			loadSomeFavorites: card => {
 				const store = getStore();
 				if (store.favorites.length < 1) {

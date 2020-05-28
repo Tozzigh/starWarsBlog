@@ -21,31 +21,9 @@ const injectContext = PassedComponent => {
 			})
 		);
 		useEffect(() => {
-			fetch("https://swapi.dev/api/people/", {
-				method: "GET",
-				headers: {}
-			})
-				.then(response => {
-					return response.json();
-				})
-				.then(data => state.actions.loadSomePeople(data.results));
-		}, []);
-
-		useEffect(() => {
-			fetch("https://swapi.dev/api/planets/", {
-				method: "GET",
-				headers: {}
-			})
-				.then(response => {
-					return response.json();
-				})
-				.then(data => state.actions.loadSomePlanets(data.results));
-		}, []);
-
-		useEffect(() => {
-			fetch("https://swapi.dev/api/vehicles/")
-				.then(response => response.json())
-				.then(data => state.actions.loadSomeVehicles(data.results));
+			state.actions.pullPeople();
+			state.actions.pullPlanets();
+			state.actions.pullVehicles();
 		}, []);
 
 		return (

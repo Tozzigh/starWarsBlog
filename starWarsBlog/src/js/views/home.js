@@ -15,6 +15,7 @@ const Home = () => {
 				<h1>Favorites</h1>
 				<hr />
 				{store.favorites.map((item, index) => {
+					const name = Object.values(item)[0];
 					return (
 						<div
 							className="card bg-dark col-lg-2 col-md-6 mb-4 border border-secondary p-0 m-3"

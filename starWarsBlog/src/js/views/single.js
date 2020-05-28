@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 
-import PropTypes from "prop-types";
 import "../../styles/index.scss";
 
 const Single = () => {

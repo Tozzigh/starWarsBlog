@@ -11,7 +11,9 @@ const Planets = () => {
 			<div className="views mt-5">
 				{store.planets.map((item, index) => {
 					return (
-						<div className="card col-lg-2 col-md-6 mb-4 border border-secondary p-0 m-3" key={index}>
+						<div
+							className="card bg-dark col-lg-2 col-md-6 mb-4 border border-secondary p-0 m-3"
+							key={index}>
 							{CardsP(item.name, item.population, item.terrain, item.gravity)}
 						</div>
 					);
