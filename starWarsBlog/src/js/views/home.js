@@ -6,7 +6,7 @@ import "../../styles/index.scss";
 import Cards from "../../js/component/cards.js";
 import CardsP from "../../js/component/cardsP.js";
 import CardsV from "../../js/component/cardsV.js";
-
+import { Link } from "react-router-dom";
 const Home = () => {
 	const { store, actions } = useContext(Context);
 	return (
@@ -25,9 +25,15 @@ const Home = () => {
 								<p className="card-text">{Object.keys(item)[3] + ": " + Object.values(item)[3]}</p>
 							</div>
 							<div className="card-footer">
-								<button className="btn btn-primary" onClick={() => console.log(store)}>
-									Learn more!
-								</button>
+								<Link
+									to={{
+										pathname: "/single/" + name.replace(" ", "").toLowerCase(),
+										state: { name: { name } }
+									}}>
+									<button className="btn btn-primary" onClick={() => actions.loadSingle({ name })}>
+										Learn more!
+									</button>
+								</Link>
 							</div>
 						</div>
 					);

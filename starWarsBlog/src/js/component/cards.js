@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 import "../../styles/index.scss";
 const Cards = (name, gender, birth, height) => {
 	const { store, actions } = useContext(Context);
@@ -13,9 +14,11 @@ const Cards = (name, gender, birth, height) => {
 				<p className="card-text">{"Height: " + height}</p>
 			</div>
 			<div className="card-footer">
-				<button className="btn btn-primary" onClick={() => console.log(store)}>
-					Learn more!
-				</button>
+				<Link to={{ pathname: "/single/" + name.replace(" ", "").toLowerCase(), state: { name: { name } } }}>
+					<button className="btn btn-primary" onClick={() => actions.loadSingle({ name })}>
+						Learn more!
+					</button>
+				</Link>
 				<button
 					className="fa fa-heart border-0"
 					onClick={() =>

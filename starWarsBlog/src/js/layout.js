@@ -7,6 +7,7 @@ import People from "./views/people";
 import Vehicles from "./views/vehicles";
 import Planets from "./views/planets";
 import injectContext from "./store/appContext";
+import Single from "./views/single";
 
 import { Navbar } from "./component/navbar";
 
@@ -26,6 +27,7 @@ export const Layout = () => {
 						<Route path="/people" component={People} />
 						<Route path="/vehicles" component={Vehicles} />
 						<Route path="/planets" component={Planets} />
+						<Route path="/single/:theid" component={Single} />
 						<Route render={() => <h1>Not found!</h1>} />
 					</Switch>
 				</ScrollToTop>
