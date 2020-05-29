@@ -85,10 +85,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const keyArray = [];
 				Object.keys(item).map(key => {
 					if (!Array.isArray(item[key]) && item[key].slice(0, 4) !== "http") {
-						keyArray.push(key.charAt(0).toUpperCase() + key.slice(1));
+						keyArray.push(getActions().toUpp(key));
 					}
 				});
 				return keyArray;
+			},
+			toUpp: item => {
+				return item.charAt(0).toUpperCase() + item.slice(1);
 			}
 		}
 	};
