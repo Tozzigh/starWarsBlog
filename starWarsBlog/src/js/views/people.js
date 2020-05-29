@@ -14,7 +14,7 @@ const People = () => {
 						<div
 							className="card bg-dark col-lg-2 col-md-6 mb-4 border border-secondary p-0 m-3"
 							key={index}>
-							{Cards(item.name, item.gender, item.birth_year, item.height)}
+							{Cards(item)}
 						</div>
 					);
 				})}

@@ -40,3 +40,22 @@ hr{
     background-size: cover;
     padding-top: 30px;
 }
+.value{
+    word-wrap: wrap;
+    word-break: break-all;
+}
+ul{
+    padding: 0%;
+    list-style: none;
+}
+li{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+li h5{
+    margin:0;
+}
+li p{
+    margin:0;
+}

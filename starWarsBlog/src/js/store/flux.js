@@ -72,12 +72,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				}
 			},
-			ciao: item => {
-				const char = {};
-				Object.keys(item).map((key, index) => {
-					char[key] = item[key];
+			valArray: item => {
+				const valArray = [];
+				Object.keys(item).map(key => {
+					if (!Array.isArray(item[key]) && item[key].slice(0, 4) !== "http") {
+						valArray.push(item[key]);
+					}
 				});
-				return char;
+				return valArray;
+			},
+			keyArray: item => {
+				const keyArray = [];
+				Object.keys(item).map(key => {
+					if (!Array.isArray(item[key]) && item[key].slice(0, 4) !== "http") {
+						keyArray.push(key.charAt(0).toUpperCase() + key.slice(1));
+					}
+				});
+				return keyArray;
 			}
 		}
 	};

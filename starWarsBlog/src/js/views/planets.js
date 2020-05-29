@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
-import CardsP from "../../js/component/cardsP.js";
+import Cards from "../../js/component/cardsP.js";
 import "../../styles/index.scss";
 
 const Planets = () => {
@@ -14,7 +14,7 @@ const Planets = () => {
 						<div
 							className="card bg-dark col-lg-2 col-md-6 mb-4 border border-secondary p-0 m-3"
 							key={index}>
-							{CardsP(item.name, item.population, item.terrain, item.gravity)}
+							{Cards(item)}
 						</div>
 					);
 				})}

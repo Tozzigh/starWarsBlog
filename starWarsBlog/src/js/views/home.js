@@ -63,7 +63,7 @@ const Home = () => {
 						<div
 							className="card bg-dark col-lg-2 col-md-6 mb-4 border border-secondary p-0 m-3"
 							key={index}>
-							{CardsP(item.name, item.population, item.terrain, item.gravity, index)}
+							{Cards(item)}
 						</div>
 					);
 				})}
@@ -76,7 +76,7 @@ const Home = () => {
 						<div
 							className="card bg-dark col-lg-2 col-md-6 mb-4 border border-secondary p-0 m-3"
 							key={index}>
-							{CardsV(item.name, item.model, item.vehicle_class, item.passengers, index)}
+							{Cards(item)}
 						</div>
 					);
 				})}
