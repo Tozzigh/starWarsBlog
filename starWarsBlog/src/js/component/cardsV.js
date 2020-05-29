@@ -22,12 +22,14 @@ const CardsV = (name, model, vehicle_class, passenger) => {
 				<button
 					className="fa fa-heart border-0"
 					onClick={() =>
-						actions.loadSomeFavorites({
-							Name: name,
-							Model: model,
-							Vehicle_class: vehicle_class,
-							Passenger: passenger
-						})
+						/*(() =>
+							actions.loadSomeFavorites({
+								Name: name,
+								Model: model,
+								Vehicle_class: vehicle_class,
+								Passenger: passenger
+							})*/
+						console.log(store.people, store.vehicles, store.planets)
 					}
 				/>
 			</div>
