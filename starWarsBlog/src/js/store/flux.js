@@ -1,11 +1,11 @@
+import React from "react";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			people: [],
 			planets: [],
 			vehicles: [],
-			favorites: [],
-			single: ""
+			favorites: []
 		},
 		actions: {
 			pullPeople: () => {
@@ -71,6 +71,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return vehicles[x];
 					}
 				}
+			},
+			ciao: item => {
+				const char = {};
+				Object.keys(item).map((key, index) => {
+					char[key] = item[key];
+				});
+				return char;
 			}
 		}
 	};

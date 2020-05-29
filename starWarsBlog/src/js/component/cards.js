@@ -1,10 +1,20 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
-import "../../styles/index.scss";
-const Cards = (name, gender, birth, height) => {
+import "../../styles/index.scss"; //{name:"Sky", gender:"male", age:"30"}
+const Cards = item => {
 	const { store, actions } = useContext(Context);
+
+	const char = actions.ciao(item);
+
 	return (
+		<>
+			<img className="card-img-top" src="http://placehold.it/500x325" />
+			<div className="card-body">{Object.keys(item).map((key, index) => {})}</div>
+		</>
+	);
+
+	/*return (
 		<>
 			<img className="card-img-top" src="http://placehold.it/500x325" />
 			<div className="card-body">
@@ -24,14 +34,14 @@ const Cards = (name, gender, birth, height) => {
 					onClick={() =>
 						actions.loadSomeFavorites({
 							Name: name,
-							Gender: gender,
-							Birth_yeat: birth,
-							Height: height
+							Model: model,
+							Vehicle_class: vehicle_class,
+							Passenger: passenger
 						})
 					}
 				/>
 			</div>
 		</>
-	);
+	);*/
 };
 export default Cards;
