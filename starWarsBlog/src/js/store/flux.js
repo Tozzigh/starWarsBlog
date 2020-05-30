@@ -4,34 +4,50 @@ const getState = ({ getStore, getActions, setStore }) => {
 			people: [],
 			planets: [],
 			vehicles: [],
-			favorites: [],
-			iterator: []
+			favorites: []
 		},
 		actions: {
-			pullPeople: () => {
-				const store = getStore();
-				const holder = [];
-				fetch("https://swapi.dev/api/people/")
-					.then(response => response.json())
-					.then(data => {
-						data.results.map(char => {
-							holder.push(char);
-						});
-						console.log(holder);
-						setStore({ iterator: data.next.replace(":", "s:") });
-
-						if (getStore().iterator !== null) {
-							fetch(getStore().iterator)
-								.then(response => response.json())
-								.then(dataSec => {
-									data.results.map(charNext => {
-										holder.push(charNext);
-									});
-									setStore({ iterator: dataSec.next.replace(":", "s:") });
-								});
-						} else return;
+			pullPeople: async () => {
+				var store = getStore();
+				var holder = [];
+				var url = "https://swapi.dev/api/people/";
+				let response = await fetch(url);
+				let data = await response.json();
+				if (response.ok) {
+					data.results.map(dataN => {
+						holder.push(dataN);
 					});
-				setStore({ people: holder });
+					for (let pageNumber = 2; pageNumber < 100; pageNumber++) {
+						let nextResponse = await fetch("https://swapi.dev/api/people/?page=" + pageNumber.toString());
+						let nextData = await nextResponse.json();
+						if (nextResponse.ok) {
+							nextData.results.map(dataN => {
+								holder.push(dataN);
+							});
+						} else {
+							console.log(response.statusText);
+							break;
+						}
+						if (nextData.next === null) {
+							break;
+						}
+					}
+					setStore({ people: holder });
+				} else {
+					console.log(response.statusText);
+				}
+
+				// while (url !== null) {
+				// 	fetch(url)
+				// 		.then(response => response.json())
+				// 		.then(data => {
+				// 			data.results.map(charNext => {
+				// 				holder.push(charNext);
+				// 			});
+				// 			url = data.next !== null ? data.next.replace(":", "s:") : null;
+				// 		});
+				// }
+				// setStore({ people: holder });
 			},
 			pullPlanets: () => {
 				fetch("https://swapi.dev/api/planets/")
