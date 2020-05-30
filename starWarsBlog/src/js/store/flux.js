@@ -5,28 +5,33 @@ const getState = ({ getStore, getActions, setStore }) => {
 			planets: [],
 			vehicles: [],
 			favorites: [],
-			url33: []
+			iterator: []
 		},
 		actions: {
 			pullPeople: () => {
-				const storePeople = getStore();
+				const store = getStore();
+				const holder = [];
 				fetch("https://swapi.dev/api/people/")
 					.then(response => response.json())
 					.then(data => {
-						storePeople.url33.push(data);
-						var iterat = data.next;
-						setStore({ people: data.results });
-						while (iterat !== "http://swapi.dev/api/people/?page=5") {
-							const clean = iterat.split(":");
-							const urldos = clean[0] + "s:" + clean[1];
-							fetch(urldos)
+						data.results.map(char => {
+							holder.push(char);
+						});
+						console.log(holder);
+						setStore({ iterator: data.next.replace(":", "s:") });
+
+						if (getStore().iterator !== null) {
+							fetch(getStore().iterator)
 								.then(response => response.json())
 								.then(dataSec => {
-									storePeople.url33.push(dataSec);
-									iterat = dataSec.next;
+									data.results.map(charNext => {
+										holder.push(charNext);
+									});
+									setStore({ iterator: dataSec.next.replace(":", "s:") });
 								});
-						}
+						} else return;
 					});
+				setStore({ people: holder });
 			},
 			pullPlanets: () => {
 				fetch("https://swapi.dev/api/planets/")
