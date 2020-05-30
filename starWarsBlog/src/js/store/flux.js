@@ -1,20 +1,32 @@
-import React from "react";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			people: [],
 			planets: [],
 			vehicles: [],
-			favorites: []
+			favorites: [],
+			url33: []
 		},
 		actions: {
 			pullPeople: () => {
+				const storePeople = getStore();
 				fetch("https://swapi.dev/api/people/")
 					.then(response => response.json())
-					.then(data => getActions().loadSomePeople(data.results));
-			},
-			loadSomePeople: data => {
-				setStore({ people: data });
+					.then(data => {
+						storePeople.url33.push(data);
+						var iterat = data.next;
+						setStore({ people: data.results });
+						while (iterat !== "http://swapi.dev/api/people/?page=5") {
+							const clean = iterat.split(":");
+							const urldos = clean[0] + "s:" + clean[1];
+							fetch(urldos)
+								.then(response => response.json())
+								.then(dataSec => {
+									storePeople.url33.push(dataSec);
+									iterat = dataSec.next;
+								});
+						}
+					});
 			},
 			pullPlanets: () => {
 				fetch("https://swapi.dev/api/planets/")
