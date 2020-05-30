@@ -4,17 +4,50 @@ const getState = ({ getStore, getActions, setStore }) => {
 			people: [],
 			planets: [],
 			vehicles: [],
-			favorites: [],
-			single: ""
+			favorites: []
 		},
 		actions: {
-			pullPeople: () => {
-				fetch("https://swapi.dev/api/people/")
-					.then(response => response.json())
-					.then(data => getActions().loadSomePeople(data.results));
-			},
-			loadSomePeople: data => {
-				setStore({ people: data });
+			pullPeople: async () => {
+				var store = getStore();
+				var holder = [];
+				var url = "https://swapi.dev/api/people/";
+				let response = await fetch(url);
+				let data = await response.json();
+				if (response.ok) {
+					data.results.map(dataN => {
+						holder.push(dataN);
+					});
+					for (let pageNumber = 2; pageNumber < 100; pageNumber++) {
+						let nextResponse = await fetch("https://swapi.dev/api/people/?page=" + pageNumber.toString());
+						let nextData = await nextResponse.json();
+						if (nextResponse.ok) {
+							nextData.results.map(dataN => {
+								holder.push(dataN);
+							});
+						} else {
+							console.log(response.statusText);
+							break;
+						}
+						if (nextData.next === null) {
+							break;
+						}
+					}
+					setStore({ people: holder });
+				} else {
+					console.log(response.statusText);
+				}
+
+				// while (url !== null) {
+				// 	fetch(url)
+				// 		.then(response => response.json())
+				// 		.then(data => {
+				// 			data.results.map(charNext => {
+				// 				holder.push(charNext);
+				// 			});
+				// 			url = data.next !== null ? data.next.replace(":", "s:") : null;
+				// 		});
+				// }
+				// setStore({ people: holder });
 			},
 			pullPlanets: () => {
 				fetch("https://swapi.dev/api/planets/")
@@ -71,6 +104,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return vehicles[x];
 					}
 				}
+			},
+			valArray: item => {
+				const valArray = [];
+				Object.keys(item).map(key => {
+					if (!Array.isArray(item[key]) && item[key].slice(0, 4) !== "http") {
+						valArray.push(item[key]);
+					}
+				});
+				return valArray;
+			},
+			keyArray: item => {
+				const keyArray = [];
+				Object.keys(item).map(key => {
+					if (!Array.isArray(item[key]) && item[key].slice(0, 4) !== "http") {
+						keyArray.push(getActions().toUpp(key));
+					}
+				});
+				return keyArray;
+			},
+			toUpp: item => {
+				return item.charAt(0).toUpperCase() + item.slice(1);
 			}
 		}
 	};

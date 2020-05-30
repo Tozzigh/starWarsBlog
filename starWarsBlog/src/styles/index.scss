@@ -1,5 +1,6 @@
 body{
     overflow-x: hidden;
+    background-image: url("https://starwarsblog.starwars.com/wp-content/uploads/2020/04/star-wars-backgrounds-25.jpg");
 }
 .fa{
     color: rgb(241, 241, 65);
@@ -39,4 +40,20 @@ hr{
     background-repeat: none;
     background-size: cover;
     padding-top: 30px;
+}
+.value{
+    word-wrap: wrap;
+    word-break: break-all;
+}
+.title{
+    color:#d4af37;
+    font-size: 20px;
+    display: inline;
+}
+.value{
+    font-size: 15px;
+    display: inline;
+}
+.singleValue{
+    color: blue;
 }
