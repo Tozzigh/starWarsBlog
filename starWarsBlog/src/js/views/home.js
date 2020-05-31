@@ -38,7 +38,7 @@ const Home = () => {
 			<div className="row ml-1">
 				<h1>Peoples</h1>
 				<hr />
-				{store.people.map((item, index) => {
+				{store.people.slice(0, 5).map((item, index) => {
 					const name = Object.values(item)[0];
 					return (
 						<div
@@ -63,11 +63,14 @@ const Home = () => {
 						</div>
 					);
 				})}
+				<Link to="/people">
+					<button className="more fas fa-angle-double-right" />
+				</Link>
 			</div>
 			<div className="row ml-1">
 				<h1>Planets</h1>
 				<hr />
-				{store.planets.map((item, index) => {
+				{store.planets.slice(0, 5).map((item, index) => {
 					const name = Object.values(item)[0];
 					return (
 						<div
@@ -92,11 +95,14 @@ const Home = () => {
 						</div>
 					);
 				})}
+				<Link to="/planets">
+					<button className="more fas fa-angle-double-right" />
+				</Link>
 			</div>
 			<div className="row ml-1">
 				<h1>Vehicles</h1>
 				<hr />
-				{store.vehicles.map((item, index) => {
+				{store.vehicles.slice(0, 5).map((item, index) => {
 					const name = Object.values(item)[0];
 					return (
 						<div
@@ -121,6 +127,9 @@ const Home = () => {
 						</div>
 					);
 				})}
+				<Link to="/vehicles">
+					<button className="more fas fa-angle-double-right" />
+				</Link>
 			</div>
 		</div>
 	);

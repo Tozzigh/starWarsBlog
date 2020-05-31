@@ -7,63 +7,32 @@ const getState = ({ getStore, getActions, setStore }) => {
 			favorites: []
 		},
 		actions: {
-			pullPeople: async () => {
-				var store = getStore();
+			pullPeople: async (urlBase, arrayBase) => {
 				var holder = [];
-				var url = "https://swapi.dev/api/people/";
-				let response = await fetch(url);
-				let data = await response.json();
-				if (response.ok) {
-					data.results.map(dataN => {
-						holder.push(dataN);
-					});
-					for (let pageNumber = 2; pageNumber < 100; pageNumber++) {
-						let nextResponse = await fetch("https://swapi.dev/api/people/?page=" + pageNumber.toString());
-						let nextData = await nextResponse.json();
-						if (nextResponse.ok) {
-							nextData.results.map(dataN => {
-								holder.push(dataN);
-							});
-						} else {
-							console.log(response.statusText);
-							break;
-						}
-						if (nextData.next === null) {
-							break;
-						}
+				var url = urlBase;
+				for (let page = 0; page < 100; page++) {
+					let response = await fetch(url);
+					let data = await response.json();
+					if (response.ok) {
+						data.results.map(dataN => {
+							holder.push(dataN);
+						});
+						url = data.next !== null ? data.next.replace(":", "s:") : null;
+					} else {
+						console.log(response.statusText);
+						break;
 					}
-					setStore({ people: holder });
-				} else {
-					console.log(response.statusText);
+					if (data.next === null) {
+						break;
+					}
+					if (arrayBase === "people") {
+						setStore({ people: holder });
+					} else if (arrayBase === "planets") {
+						setStore({ planets: holder });
+					} else if (arrayBase === "vehicles") {
+						setStore({ vehicles: holder });
+					}
 				}
-
-				// while (url !== null) {
-				// 	fetch(url)
-				// 		.then(response => response.json())
-				// 		.then(data => {
-				// 			data.results.map(charNext => {
-				// 				holder.push(charNext);
-				// 			});
-				// 			url = data.next !== null ? data.next.replace(":", "s:") : null;
-				// 		});
-				// }
-				// setStore({ people: holder });
-			},
-			pullPlanets: () => {
-				fetch("https://swapi.dev/api/planets/")
-					.then(response => response.json())
-					.then(data => getActions().loadSomePlanets(data.results));
-			},
-			loadSomePlanets: data => {
-				setStore({ planets: data });
-			},
-			pullVehicles: () => {
-				fetch("https://swapi.dev/api/vehicles/")
-					.then(response => response.json())
-					.then(data => getActions().loadSomeVehicles(data.results));
-			},
-			loadSomeVehicles: data => {
-				setStore({ vehicles: data });
 			},
 
 			loadSingle: data => {

@@ -21,9 +21,9 @@ const injectContext = PassedComponent => {
 			})
 		);
 		useEffect(() => {
-			state.actions.pullPeople();
-			state.actions.pullPlanets();
-			state.actions.pullVehicles();
+			state.actions.pullPeople("https://swapi.dev/api/people/", "people");
+			state.actions.pullPeople("https://swapi.dev/api/planets/", "planets");
+			state.actions.pullPeople("https://swapi.dev/api/vehicles/", "vehicles");
 		}, []);
 
 		return (
