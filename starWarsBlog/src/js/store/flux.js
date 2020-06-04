@@ -33,6 +33,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ vehicles: holder });
 					}
 				}
+				const store = getStore();
+				localStorage.setItem("people", JSON.stringify(store.people));
+				localStorage.setItem("vehicles", JSON.stringify(store.vehicles));
+				localStorage.setItem("planets", JSON.stringify(store.planets));
+				localStorage.setItem("favorites", JSON.stringify(store.favorites));
+			},
+			pullLocal: () => {
+				setStore({
+					people: JSON.parse(localStorage.getItem("people")),
+					vehicles: JSON.parse(localStorage.getItem("vehicles")),
+					planets: JSON.parse(localStorage.getItem("planets")),
+					favorites: JSON.parse(localStorage.getItem("favorites"))
+				});
 			},
 
 			loadSingle: data => {
@@ -51,7 +64,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ favorites: [...store.favorites, card] });
 					}
 				}
+				localStorage.setItem("favorites", JSON.stringify(store.favorites));
 			},
+			deleteFavorites: item => {
+				const store = getStore();
+				var arrayHolder = [];
+				store.favorites.map(card => {
+					if (card.name !== item.name) {
+						arrayHolder.push(card);
+					} else {
+						return;
+					}
+				});
+				setStore({ favorites: arrayHolder });
+				localStorage.removeItem("favorites");
+				localStorage.setItem("favorites", JSON.stringify(store.favorites));
+			},
+
 			loadSingleView: () => {
 				const store = getStore();
 				const single = store.single.name;

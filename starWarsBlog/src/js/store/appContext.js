@@ -21,9 +21,13 @@ const injectContext = PassedComponent => {
 			})
 		);
 		useEffect(() => {
-			state.actions.pullPeople("https://swapi.dev/api/people/", "people");
-			state.actions.pullPeople("https://swapi.dev/api/planets/", "planets");
-			state.actions.pullPeople("https://swapi.dev/api/vehicles/", "vehicles");
+			if (!Object.keys(localStorage).includes("people")) {
+				state.actions.pullPeople("https://swapi.dev/api/people/", "people");
+				state.actions.pullPeople("https://swapi.dev/api/planets/", "planets");
+				state.actions.pullPeople("https://swapi.dev/api/vehicles/", "vehicles");
+			} else {
+				state.actions.pullLocal();
+			}
 		}, []);
 
 		return (

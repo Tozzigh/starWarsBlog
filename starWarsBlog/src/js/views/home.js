@@ -30,6 +30,10 @@ const Home = () => {
 										Learn more!
 									</button>
 								</Link>
+								<button
+									className="fa fa-times border-0"
+									onClick={() => actions.deleteFavorites(item)}
+								/>
 							</div>
 						</div>
 					);
